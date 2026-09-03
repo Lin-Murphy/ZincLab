@@ -1,0 +1,13 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import ProjectsGrid from '@/components/ProjectsGrid.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { locales, type Locale, ui } from '@/lib/i18n';
+export const getStaticPaths = (async () => locales.map((locale) => ({ params: { locale } }))) satisfies GetStaticPaths;
+const locale = Astro.params.locale as Locale;
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title={ui[locale].nav.projects} locale={locale} active="projects" navTheme="light" canonicalPath={Astro.url.pathname}>
+  <main id="main" class="listing-page projects-listing"><header class="listing-header"><span>{ui[locale].archive}</span><h1>{ui[locale].nav.projects}</h1></header><ProjectsGrid projects={projects} locale={locale} /></main>
+</BaseLayout>

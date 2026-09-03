@@ -1,0 +1,23 @@
+---
+// The studio's public pages are language-specific static documents.
+// English is the provisional default until launch language policy is confirmed.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const englishHome = `${base}/en/`;
+const chineseHome = `${base}/zh/`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex" />
+    <title>Zinc Lab</title>
+  </head>
+  <body>
+    <p><a href={englishHome}>Continue to Zinc Lab</a></p>
+    <script is:inline define:vars={{ englishHome, chineseHome }}>
+      const savedLocale = localStorage.getItem('zinc-locale');
+      location.replace(savedLocale === 'zh' ? chineseHome : englishHome);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.pnpm-store/
+.DS_Store
+tmp/
+references/
+PROJECT_BRIEF.md
+.env
+.env.*
+!.env.example

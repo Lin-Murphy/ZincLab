@@ -1,0 +1,45 @@
+---
+import { site } from '@/data/site';
+import type { Locale } from '@/lib/i18n';
+import { route, ui } from '@/lib/i18n';
+
+interface Props { active?: 'home' | 'talents' | 'projects' | 'about'; theme?: 'light' | 'dark'; locale: Locale; }
+const { active = 'home', theme = 'light', locale } = Astro.props;
+const equivalentPath = Astro.url.pathname.replace(`/${locale}/`, `/${locale === 'en' ? 'zh' : 'en'}/`);
+const nav = [
+  { key: 'home', label: ui[locale].nav.home, href: route(locale) },
+  { key: 'talents', label: ui[locale].nav.talents, href: route(locale, 'talents') },
+  { key: 'projects', label: ui[locale].nav.projects, href: route(locale, 'projects') },
+  { key: 'about', label: ui[locale].nav.about, href: route(locale, 'about') },
+] as const;
+---
+
+<header class="site-header" data-site-header data-theme={theme}>
+  <nav aria-label="Primary navigation">
+    <div class="nav-main">
+      {nav.map((item) => (
+        <a href={item.href} data-nav-key={item.key} aria-current={item.key !== 'home' && active === item.key ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </div>
+    <div class="nav-utility">
+      <div class="nav-language" aria-label="Language">
+        <a href={locale === 'en' ? Astro.url.pathname : equivalentPath} data-language-choice="en" aria-current={locale === 'en' ? 'page' : undefined}>EN</a>
+        <span aria-hidden="true">/</span>
+        <a href={locale === 'zh' ? Astro.url.pathname : equivalentPath} data-language-choice="zh" aria-current={locale === 'zh' ? 'page' : undefined}>中文</a>
+      </div>
+      <div class="nav-social" aria-label="Social media">
+      {site.social.map((item) => (
+        <a href={item.href} target="_blank" rel="noreferrer" aria-label={`${item.label} (opens in a new tab)`}>
+          {item.label === 'Instagram' ? 'IG' : 'IN'}
+        </a>
+      ))}
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-language-choice]').forEach((link) => {
+    link.addEventListener('click', () => localStorage.setItem('zinc-locale', link.dataset.languageChoice ?? 'en'));
+  });
+</script>

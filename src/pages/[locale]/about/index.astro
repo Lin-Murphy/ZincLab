@@ -1,0 +1,14 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { locales, type Locale, ui } from '@/lib/i18n';
+export const getStaticPaths = (async () => locales.map((locale) => ({ params: { locale } }))) satisfies GetStaticPaths;
+const locale = Astro.params.locale as Locale;
+const copy = {
+  en: { eyebrow: 'Independent moving-image studio', title: 'Soft enough to notice.<br />Precise enough to hold.', lead: 'Zinc Lab works between art and advertising, shaping films around the character already present in a subject.', detail: 'We are interested in the point where a human detail meets a disciplined structure: a gesture, texture or unplanned moment given a clear cinematic form.', note: 'Public copy placeholder — final studio description and contact details require approval.', location: 'London / TBC' },
+  zh: { eyebrow: '独立动态影像工作室', title: '柔软，因而被感知。<br />精准，因而被留存。', lead: 'Zinc Lab 游走于艺术与商业影像之间，以主体本已具备的特质为起点塑造影片。', detail: '我们关注人性细节与严谨结构相遇的时刻：手势、肌理，或未经设计的瞬间，被赋予清晰的电影化形式。', note: '公开文案占位 — 最终工作室介绍与联系方式尚待确认。', location: '伦敦 / 待确认' },
+}[locale];
+---
+<BaseLayout title={ui[locale].nav.about} locale={locale} active="about" navTheme="light" canonicalPath={Astro.url.pathname}>
+  <main id="main" class="about-page"><p class="eyebrow">{copy.eyebrow}</p><h1 set:html={copy.title} /><div class="about-grid"><p class="about-lead">{copy.lead}</p><div><p>{copy.detail}</p><p class="draft-note">{copy.note}</p></div></div><footer class="contact-strip"><span>{ui[locale].enquiries}</span><a href="mailto:studio@example.com">studio@example.com</a><span>{copy.location}</span></footer></main>
+</BaseLayout>

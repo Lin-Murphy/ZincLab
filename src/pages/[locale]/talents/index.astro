@@ -1,0 +1,13 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import TalentList from '@/components/TalentList.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { locales, type Locale, ui } from '@/lib/i18n';
+export const getStaticPaths = (async () => locales.map((locale) => ({ params: { locale } }))) satisfies GetStaticPaths;
+const locale = Astro.params.locale as Locale;
+const talents = (await getCollection('talents')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title={ui[locale].nav.talents} locale={locale} active="talents" navTheme="light" canonicalPath={Astro.url.pathname}>
+  <main id="main" class="listing-page"><header class="listing-header"><span>{ui[locale].roster}</span><h1>{ui[locale].nav.talents}</h1></header><TalentList talents={talents} locale={locale} /></main>
+</BaseLayout>

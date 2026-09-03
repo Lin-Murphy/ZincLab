@@ -1,0 +1,44 @@
+---
+import SiteHeader from '@/components/SiteHeader.astro';
+import { site } from '@/data/site';
+import type { Locale } from '@/lib/i18n';
+import { localize, route, ui } from '@/lib/i18n';
+import '@/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  active?: 'home' | 'talents' | 'projects' | 'about';
+  navTheme?: 'light' | 'dark';
+  bodyClass?: string;
+  locale: Locale;
+  canonicalPath?: string;
+  alternatePath?: string;
+}
+const { title, description = localize(site.description, Astro.props.locale), active = 'home', navTheme = 'light', bodyClass = '', locale, canonicalPath = route(Astro.props.locale), alternatePath } = Astro.props;
+const pageTitle = title ? `${title} — ${site.name}` : site.name;
+const otherLocale: Locale = locale === 'en' ? 'zh' : 'en';
+const translatedPath = alternatePath ?? canonicalPath.replace(`/${locale}/`, `/${otherLocale}/`);
+const hreflang = locale === 'zh' ? 'zh-CN' : 'en';
+const otherHreflang = otherLocale === 'zh' ? 'zh-CN' : 'en';
+---
+
+<!doctype html>
+<html lang={locale === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0a0b0c" />
+    <link rel="canonical" href={canonicalPath} />
+    <link rel="alternate" hreflang={hreflang} href={canonicalPath} />
+    <link rel="alternate" hreflang={otherHreflang} href={translatedPath} />
+    <title>{pageTitle}</title>
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">{ui[locale].skip}</a>
+    <SiteHeader active={active} theme={navTheme} locale={locale} />
+    <slot />
+  </body>
+</html>

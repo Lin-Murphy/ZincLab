@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '@/lib/i18n';
+import { asset, localize, route } from '@/lib/i18n';
+interface Props { projects: CollectionEntry<'projects'>[]; locale: Locale; }
+const { projects, locale } = Astro.props;
+---
+
+<div class="projects-grid">
+  {projects.map((project) => (
+    <a class="project-card" href={route(locale, 'projects', project.data.slug)}>
+      <img src={asset(project.data.cover.src)} alt={localize(project.data.cover.alt, locale)} loading="lazy" decoding="async" />
+      <span class="project-overlay">
+        <strong>{localize(project.data.title, locale)}</strong>
+        <small>{localize(project.data.discipline, locale)} · {project.data.year}</small>
+      </span>
+      {project.data.placeholder && <span class="placeholder-chip">Placeholder</span>}
+    </a>
+  ))}
+</div>

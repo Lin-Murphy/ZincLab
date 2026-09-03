@@ -1,0 +1,22 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { asset, locales, localize, route, type Locale, ui } from '@/lib/i18n';
+export const getStaticPaths = (async () => {
+  const projects = await getCollection('projects');
+  return locales.flatMap((locale) => projects.map((project) => ({ params: { locale, slug: project.data.slug }, props: { project } })));
+}) satisfies GetStaticPaths;
+const { project } = Astro.props as { project: CollectionEntry<'projects'> };
+const locale = Astro.params.locale as Locale;
+---
+<BaseLayout title={localize(project.data.title, locale)} locale={locale} active="projects" navTheme="light" canonicalPath={Astro.url.pathname}>
+  <main id="main" class="project-detail">
+    <header class="project-hero-title"><span>{localize(project.data.discipline, locale)} / {project.data.year}</span><h1>{localize(project.data.title, locale)}</h1>{project.data.placeholder && <em>{ui[locale].placeholderProject}</em>}</header>
+    <figure class="project-hero"><img src={asset(project.data.cover.src)} alt={localize(project.data.cover.alt, locale)} /></figure>
+    <section class="project-meta"><div><span>{ui[locale].client}</span><strong>{localize(project.data.client, locale)}</strong></div><div><span>{ui[locale].year}</span><strong>{project.data.year}</strong></div><div><span>{ui[locale].format}</span><strong>{localize(project.data.discipline, locale)}</strong></div></section>
+    <section class="project-copy">{localize(project.data.body, locale)}</section>
+    <div class="project-gallery">{project.data.gallery.map((image) => <img src={asset(image.src)} alt={localize(image.alt, locale)} loading="lazy" decoding="async" />)}</div>
+    <a class="back-link" href={route(locale, 'projects')}>{ui[locale].back}</a>
+  </main>
+</BaseLayout>

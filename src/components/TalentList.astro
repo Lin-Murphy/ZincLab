@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '@/lib/i18n';
+import { asset, localize, route } from '@/lib/i18n';
+interface Props { talents: CollectionEntry<'talents'>[]; compact?: boolean; locale: Locale; }
+const { talents, compact = false, locale } = Astro.props;
+---
+
+<div class:list={['talent-list-wrap', { 'is-compact': compact }]} data-talent-list>
+  {!compact && (
+    <div class="talent-preview talent-preview-left" aria-hidden="true"><img data-preview-left alt="" /></div>
+  )}
+  <ol class="talent-list">
+    {talents.map((talent) => (
+      <li>
+        <a
+          href={route(locale, 'talents', talent.data.slug)}
+          data-talent-link
+          data-left={talent.data.previews[0] ? asset(talent.data.previews[0].src) : ''}
+          data-right={talent.data.previews[1] ? asset(talent.data.previews[1].src) : ''}
+          data-left-alt={talent.data.previews[0] ? localize(talent.data.previews[0].alt, locale) : ''}
+          data-right-alt={talent.data.previews[1] ? localize(talent.data.previews[1].alt, locale) : ''}
+        >
+          <span>{talent.data.name}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+  {!compact && (
+    <div class="talent-preview talent-preview-right" aria-hidden="true"><img data-preview-right alt="" /></div>
+  )}
+</div>
+
+{!compact && <script src="../scripts/talent-hover.ts"></script>}

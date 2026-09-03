@@ -1,0 +1,20 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { asset, locales, localize, type Locale, ui } from '@/lib/i18n';
+export const getStaticPaths = (async () => {
+  const talents = await getCollection('talents');
+  return locales.flatMap((locale) => talents.map((talent) => ({ params: { locale, slug: talent.data.slug }, props: { talent } })));
+}) satisfies GetStaticPaths;
+const { talent } = Astro.props as { talent: CollectionEntry<'talents'> };
+const locale = Astro.params.locale as Locale;
+---
+<BaseLayout title={talent.data.name} locale={locale} active="talents" navTheme="light" canonicalPath={Astro.url.pathname}>
+  <main id="main" class="talent-detail">
+    <header class="detail-title"><span>{localize(talent.data.role, locale)}</span><h1>{talent.data.name}</h1>{talent.data.placeholder && <em>{ui[locale].placeholderProfile}</em>}</header>
+    <figure class="talent-portrait"><img src={asset(talent.data.portrait.src)} alt={localize(talent.data.portrait.alt, locale)} /></figure>
+    <section class="talent-info"><h2>{ui[locale].info}</h2><p class="lead">{localize(talent.data.summary, locale)}</p><div class="prose"><p>{localize(talent.data.body, locale)}</p></div></section>
+    <section class="showreel"><div><span>{ui[locale].showreel}</span><strong>{ui[locale].mediaPending}</strong></div><img src={asset(talent.data.showreel.poster)} alt={ui[locale].placeholderStudy} loading="lazy" /></section>
+  </main>
+</BaseLayout>

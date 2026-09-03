@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '@/lib/i18n';
+import { asset, localize, ui } from '@/lib/i18n';
+interface Props { films: CollectionEntry<'home-films'>[]; locale: Locale; }
+const { films } = Astro.props;
+const { locale } = Astro.props;
+---
+
+<div class="home-films" data-home-films aria-roledescription="carousel" aria-label={ui[locale].placeholderStudy}>
+  <h1 class="sr-only">Zinc Lab</h1>
+  <div class="film-stack">
+    {films.map((film, index) => (
+      <article class:list={['film', { 'is-active': index === 0 }]} data-film data-index={index} aria-hidden={index !== 0}>
+        <img src={asset(film.data.poster.src)} alt={localize(film.data.poster.alt, locale)} fetchpriority={index === 0 ? 'high' : 'auto'} loading={index === 0 ? 'eager' : 'lazy'} />
+        {film.data.videoSrc && (
+          <video muted playsinline preload={index === 0 ? 'metadata' : 'none'} poster={asset(film.data.poster.src)} data-src={asset(film.data.videoSrc)} aria-label={localize(film.data.title, locale)}></video>
+        )}
+        <div class="film-shade"></div>
+        <div class="film-caption">
+          <span>{localize(film.data.label, locale)}</span>
+          <h2>{localize(film.data.title, locale)}</h2>
+          {film.data.placeholder && <em>{ui[locale].placeholderStudy}</em>}
+        </div>
+      </article>
+    ))}
+  </div>
+  <button class="play-fallback" type="button" data-play-fallback hidden aria-label={ui[locale].play}>{locale === 'zh' ? '播放' : 'Play'}</button>
+  <div class="film-progress" aria-label="Film progress">
+    <span data-film-count>01 / {String(films.length).padStart(2, '0')}</span>
+    <div class="progress-track"><span data-film-progress></span></div>
+  </div>
+  <p class="film-instruction">{ui[locale].instruction}</p>
+</div>
+
+<script src="../scripts/video-controller.ts"></script>
