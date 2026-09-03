@@ -16,10 +16,10 @@ document.querySelectorAll<HTMLElement>('[data-talent-list]').forEach((root) => {
     links.forEach((item) => item.classList.remove('is-muted'));
     root.classList.remove('has-active-preview');
   };
+  root.addEventListener('pointerleave', clear);
   links.forEach((link) => {
     link.addEventListener('pointerenter', () => activate(link));
     link.addEventListener('focus', () => activate(link));
-    link.addEventListener('mouseleave', clear);
     link.addEventListener('blur', clear);
   });
 });
