@@ -8,6 +8,9 @@ body: { en: "An explicitly fictional study created to test the project archive a
 cover:
   src: "/media/placeholder-hero.webp"
   alt: { en: "Fabric moving across a cool metallic surface", zh: "掠过冷色金属表面的布料" }
+previewVideo:
+  src: "/media/home/placeholder/home-01.mp4"
+  poster: "/media/home/placeholder/home-01-poster.webp"
 gallery:
   - src: "/media/placeholder-hero.webp"
     alt: { en: "Fabric moving across a cool metallic surface", zh: "掠过冷色金属表面的布料" }

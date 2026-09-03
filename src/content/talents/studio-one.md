@@ -13,6 +13,7 @@ previews:
   - src: "/media/playbook-samples/aqua-raster.jpeg"
     alt: { en: "Aqua raster texture used as a visual sample", zh: "作为视觉样例的浅蓝光栅肌理" }
 showreel:
+  src: "/media/home/placeholder/home-01.mp4"
   poster: "/media/playbook-samples/blue-grid.jpeg"
 projectSlugs: ["material-study"]
 order: 1

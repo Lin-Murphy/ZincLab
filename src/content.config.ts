@@ -41,6 +41,7 @@ const projects = defineCollection({
     body: localizedText,
     cover: image,
     gallery: z.array(image),
+    previewVideo: z.object({ src: z.string(), poster: z.string() }).optional(),
     talentSlugs: z.array(z.string()).default([]),
     order: z.number().int(),
     published: z.boolean().default(false),

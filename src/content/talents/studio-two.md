@@ -13,6 +13,7 @@ previews:
   - src: "/media/playbook-samples/haze-lines.jpeg"
     alt: { en: "Hazy horizontal lines used as a visual sample", zh: "作为视觉样例的模糊横线" }
 showreel:
+  src: "/media/home/placeholder/home-02.mp4"
   poster: "/media/playbook-samples/blue-wireframe.jpeg"
 projectSlugs: ["human-form"]
 order: 2

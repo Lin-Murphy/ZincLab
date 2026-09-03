@@ -14,9 +14,10 @@ export const ui = {
     instruction: 'Click image / scroll for next scene',
     play: 'Play featured film',
     info: 'Info',
-    showreel: 'Showreel',
+    showreel: 'Showreel', temporaryMedia: 'Temporary video sample',
     mediaPending: 'Media pending',
     client: 'Client', year: 'Year', format: 'Format', back: 'Back to projects',
+    selectedWorks: 'Selected works', workPreview: 'Selected work preview',
     skip: 'Skip to content', enquiries: 'Enquiries',
   },
   zh: {
@@ -25,8 +26,9 @@ export const ui = {
     placeholderStudy: '临时影像研究', placeholderProfile: '临时人物档案',
     placeholderProject: '临时项目 — 不代表客户作品',
     instruction: '点击画面 / 滚动进入下一场景', play: '播放首页影像',
-    info: '信息', showreel: '作品集', mediaPending: '素材待定',
+    info: '信息', showreel: '作品集', temporaryMedia: '临时视频样例', mediaPending: '素材待定',
     client: '客户', year: '年份', format: '形式', back: '返回项目',
+    selectedWorks: '精选作品', workPreview: '精选作品预览',
     skip: '跳至主要内容', enquiries: '合作咨询',
   },
 } as const;

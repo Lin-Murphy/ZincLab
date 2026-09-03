@@ -8,6 +8,9 @@ body: { en: "A placeholder portrait sequence for layout and accessibility testin
 cover:
   src: "/media/placeholder-talent.webp"
   alt: { en: "Anonymous figure behind textured glass", zh: "磨砂玻璃后的匿名人物" }
+previewVideo:
+  src: "/media/home/placeholder/home-02.mp4"
+  poster: "/media/home/placeholder/home-02-poster.webp"
 gallery:
   - src: "/media/placeholder-talent.webp"
     alt: { en: "Anonymous figure behind textured glass", zh: "磨砂玻璃后的匿名人物" }

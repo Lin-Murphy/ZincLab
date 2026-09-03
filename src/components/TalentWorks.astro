@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '@/lib/i18n';
+import { asset, localize, route, ui } from '@/lib/i18n';
+interface Props { projects: CollectionEntry<'projects'>[]; locale: Locale; }
+const { projects, locale } = Astro.props;
+---
+
+<section class="talent-works" data-talent-works aria-label={ui[locale].selectedWorks}>
+  <header><span>{ui[locale].selectedWorks}</span><p>{projects.length ? String(projects.length).padStart(2, '0') : '00'}</p></header>
+  {projects.length ? (
+    <div class="talent-works-layout">
+      <ol class="talent-works-list">
+        {projects.map((project, index) => (
+          <li>
+            <a
+              href={route(locale, 'projects', project.data.slug)}
+              data-work-link
+              data-image={asset(project.data.cover.src)}
+              data-image-alt={localize(project.data.cover.alt, locale)}
+              data-video={project.data.previewVideo ? asset(project.data.previewVideo.src) : ''}
+              data-poster={project.data.previewVideo ? asset(project.data.previewVideo.poster) : asset(project.data.cover.src)}
+            >
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{localize(project.data.title, locale)}</strong>
+              <em>{localize(project.data.discipline, locale)} · {project.data.year}</em>
+            </a>
+          </li>
+        ))}
+      </ol>
+      <figure class="talent-work-preview" data-work-preview aria-hidden="true">
+        <img data-work-image alt="" />
+        <video data-work-video muted playsinline preload="none"></video>
+        <figcaption>{ui[locale].workPreview}</figcaption>
+      </figure>
+    </div>
+  ) : <p class="talent-works-empty">{locale === 'zh' ? '代表作品待确认。' : 'Selected works pending approval.'}</p>}
+</section>
+
+{projects.length > 0 && <script src="../scripts/talent-works.ts"></script>}

@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import TalentWorks from '@/components/TalentWorks.astro';
 import { asset, locales, localize, type Locale, ui } from '@/lib/i18n';
 export const getStaticPaths = (async () => {
   const talents = await getCollection('talents');
@@ -9,12 +10,16 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 const { talent } = Astro.props as { talent: CollectionEntry<'talents'> };
 const locale = Astro.params.locale as Locale;
+const projects = (await getCollection('projects'))
+  .filter((project) => talent.data.projectSlugs.includes(project.data.slug))
+  .sort((a, b) => talent.data.projectSlugs.indexOf(a.data.slug) - talent.data.projectSlugs.indexOf(b.data.slug));
 ---
 <BaseLayout title={talent.data.name} locale={locale} active="talents" navTheme="light" canonicalPath={Astro.url.pathname}>
   <main id="main" class="talent-detail">
     <header class="detail-title"><span>{localize(talent.data.role, locale)}</span><h1>{talent.data.name}</h1>{talent.data.placeholder && <em>{ui[locale].placeholderProfile}</em>}</header>
     <figure class="talent-portrait"><img src={asset(talent.data.portrait.src)} alt={localize(talent.data.portrait.alt, locale)} /></figure>
     <section class="talent-info"><h2>{ui[locale].info}</h2><p class="lead">{localize(talent.data.summary, locale)}</p><div class="prose"><p>{localize(talent.data.body, locale)}</p></div></section>
-    <section class="showreel"><div><span>{ui[locale].showreel}</span><strong>{ui[locale].mediaPending}</strong></div><img src={asset(talent.data.showreel.poster)} alt={ui[locale].placeholderStudy} loading="lazy" /></section>
+    <section class="showreel"><div><span>{ui[locale].showreel}</span><strong>{talent.data.showreel.src ? ui[locale].temporaryMedia : ui[locale].mediaPending}</strong></div>{talent.data.showreel.src ? <video src={asset(talent.data.showreel.src)} poster={asset(talent.data.showreel.poster)} muted controls playsinline preload="metadata" aria-label={`${talent.data.name} ${ui[locale].showreel}`} /> : <img src={asset(talent.data.showreel.poster)} alt={ui[locale].placeholderStudy} loading="lazy" />}</section>
+    <TalentWorks projects={projects} locale={locale} />
   </main>
 </BaseLayout>

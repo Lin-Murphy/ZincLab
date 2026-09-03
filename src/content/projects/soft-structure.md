@@ -8,6 +8,9 @@ body: { en: "A fictional material exercise used only to verify content relations
 cover:
   src: "/media/placeholder-still.webp"
   alt: { en: "Paper, brushed metal and wireframe in studio light", zh: "工作室光线中的纸张、拉丝金属与线框" }
+previewVideo:
+  src: "/media/home/placeholder/home-03.mp4"
+  poster: "/media/home/placeholder/home-03-poster.webp"
 gallery:
   - src: "/media/placeholder-still.webp"
     alt: { en: "Paper, brushed metal and wireframe", zh: "纸张、拉丝金属与线框" }
