@@ -15,7 +15,7 @@ previews:
 showreel:
   src: "/media/home/placeholder/home-02.mp4"
   poster: "/media/playbook-samples/blue-wireframe.jpeg"
-projectSlugs: ["human-form", "soft-structure", "material-study"]
+projectSlugs: ["human-form", "soft-structure", "material-study", "waterline-study", "garden-study"]
 timeline:
   - year: "01"
     title: { en: "Garden study / sample", zh: "庭院研究 / 样例" }

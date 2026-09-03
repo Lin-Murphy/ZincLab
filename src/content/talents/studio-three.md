@@ -15,7 +15,7 @@ previews:
 showreel:
   src: "/media/home/placeholder/home-03.mp4"
   poster: "/media/playbook-samples/cyan-texture.jpeg"
-projectSlugs: ["soft-structure", "material-study", "human-form"]
+projectSlugs: ["soft-structure", "material-study", "human-form", "garden-study", "waterline-study"]
 timeline:
   - year: "01"
     title: { en: "Threshold / sample", zh: "门槛 / 样例" }
