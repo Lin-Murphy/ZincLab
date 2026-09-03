@@ -36,6 +36,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .nav-main a[aria-current="page"] { text-decoration: underline; text-underline-offset: .45rem; text-decoration-thickness: 1px; }
 .nav-utility { display: flex; align-items: center; gap: 1rem; }
 .nav-language, .nav-social { display: flex; align-items: center; gap: .42rem; }
+.social-icon { display: grid; place-items: center; width: 1.15rem; height: 1.15rem; color: inherit; }
+.social-icon svg { width: 100%; height: 100%; }
+.social-icon:hover, .social-icon:focus-visible { color: var(--accent); }
 .nav-language { gap: 0; padding: 2px; border: 1px solid color-mix(in srgb, currentColor 34%, transparent); border-radius: 999px; font-size: .66rem; letter-spacing: .035em; line-height: 1; }
 .nav-language span { display: none; }
 .nav-language a { min-width: 2.3rem; padding: .38rem .46rem; border-radius: 999px; color: inherit; text-align: center; text-decoration: none; opacity: .46; transition: background-color .2s ease, color .2s ease, opacity .2s ease; }
