@@ -23,18 +23,21 @@ timeline:
     image:
       src: "/media/personal-samples/dsc00462.jpg"
       alt: { en: "Garden path and dense greenery", zh: "庭院小径与浓密绿植" }
+    projectSlug: "garden-study"
   - year: "02"
     title: { en: "Open field / sample", zh: "旷野 / 样例" }
     body: { en: "Replace this placeholder with an approved milestone, exhibition or commission.", zh: "公开发布前，请将此临时内容替换为已确认的经历、展览或委托。" }
     image:
       src: "/media/personal-samples/dsc00500.jpg"
       alt: { en: "Open field under a grey sky", zh: "灰色天空下的旷野" }
+    projectSlug: "waterline-study"
   - year: "03"
     title: { en: "Material memory / sample", zh: "材质记忆 / 样例" }
     body: { en: "A quiet visual note showing how image and text can share one timeline entry.", zh: "展示图像与文字如何共同组成编年条目的临时视觉笔记。" }
     image:
       src: "/media/personal-samples/dsc00597.jpg"
       alt: { en: "Stone architecture surrounding still water", zh: "静水周围的石质建筑" }
+    projectSlug: "soft-structure"
 order: 1
 published: false
 placeholder: true

@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '@/lib/i18n';
-import { asset, localize, ui } from '@/lib/i18n';
+import { asset, localize, route, ui } from '@/lib/i18n';
 interface Props { items: CollectionEntry<'talents'>['data']['timeline']; locale: Locale; }
 const { items, locale } = Astro.props;
 ---
@@ -10,6 +10,7 @@ const { items, locale } = Astro.props;
   <header><span>{ui[locale].timeline}</span><p>{String(items.length).padStart(2, '0')}</p></header>
   <ol>
     {items.map((item) => <li data-timeline-item>
+      {item.projectSlug && <a class="timeline-link" href={route(locale, 'projects', item.projectSlug)} aria-label={`${localize(item.title, locale)} — ${ui[locale].selectedWorks}`}></a>}
       <div class="timeline-year">{item.year}</div>
       <div class="timeline-copy"><h3>{localize(item.title, locale)}</h3><p>{localize(item.body, locale)}</p></div>
       {item.image && <img src={asset(item.image.src)} alt={localize(item.image.alt, locale)} loading="lazy" />}

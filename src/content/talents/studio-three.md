@@ -23,12 +23,14 @@ timeline:
     image:
       src: "/media/personal-samples/dsc00590.jpg"
       alt: { en: "Stone opening framing a green pool", zh: "框住绿色水池的石质开口" }
+    projectSlug: "soft-structure"
   - year: "02"
     title: { en: "Archive space / sample", zh: "档案空间 / 样例" }
     body: { en: "Replace this entry with an approved biography milestone.", zh: "用已确认的人物经历替换此条目。" }
     image:
       src: "/media/personal-samples/dsc00597.jpg"
       alt: { en: "Stone architecture surrounding still water", zh: "静水周围的石质建筑" }
+    projectSlug: "garden-study"
 order: 3
 published: false
 placeholder: true

@@ -15,15 +15,20 @@ document.querySelectorAll<HTMLElement>('[data-talent-works]').forEach((root) => 
     image.src = link.dataset.image ?? '';
     image.alt = link.dataset.imageAlt ?? '';
     const source = link.dataset.video;
-    if (source && video.dataset.activeSrc !== source) {
+    video.style.opacity = '0';
+    video.pause();
+    video.removeAttribute('src');
+    video.removeAttribute('poster');
+    video.load();
+    delete video.dataset.activeSrc;
+    if (source) {
       video.dataset.activeSrc = source;
       video.src = source;
       video.poster = link.dataset.poster ?? '';
       video.load();
+      video.addEventListener('canplay', () => { if (video.dataset.activeSrc === source) video.style.opacity = '1'; }, { once: true });
     } else if (!source) {
-      video.pause();
-      video.removeAttribute('src');
-      video.load();
+      video.style.opacity = '0';
     }
     preview.classList.add('is-active');
     if (source) void video.play().catch(() => undefined);

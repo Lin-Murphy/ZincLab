@@ -23,12 +23,14 @@ timeline:
     image:
       src: "/media/personal-samples/dsc00462.jpg"
       alt: { en: "Garden path and dense greenery", zh: "庭院小径与浓密绿植" }
+    projectSlug: "garden-study"
   - year: "02"
     title: { en: "Waterline / sample", zh: "水线 / 样例" }
     body: { en: "Replace with a confirmed milestone or project note.", zh: "替换为已确认的经历或项目说明。" }
     image:
       src: "/media/personal-samples/dsc00550.jpg"
       alt: { en: "River, weir and stone bridge", zh: "河流、堰坝与石桥" }
+    projectSlug: "waterline-study"
 order: 2
 published: false
 placeholder: true
