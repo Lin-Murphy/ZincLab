@@ -7,9 +7,8 @@ const { locale } = Astro.props;
 ---
 
 <footer class="contact-strip" aria-label={ui[locale].enquiries}>
-  <span>{ui[locale].enquiries}</span>
-  <a href={`mailto:${site.email}`}>{site.email}</a>
-  <span class="contact-socials">
+  <div class="contact-main"><span>{ui[locale].enquiries}</span><a class="contact-email" href={`mailto:${site.email}`}>{site.email}</a></div>
+  <div class="contact-meta"><span>{site.name}</span><span class="contact-socials">
     {site.social.map((item) => <a href={item.href} target="_blank" rel="noreferrer">{item.label}</a>)}
-  </span>
+  </span></div>
 </footer>
