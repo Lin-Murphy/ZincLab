@@ -17,7 +17,7 @@ export const ui = {
     showreel: 'Showreel', temporaryMedia: 'Temporary video sample',
     mediaPending: 'Media pending',
     client: 'Client', year: 'Year', format: 'Format', back: 'Back to projects',
-    selectedWorks: 'Selected works', workPreview: 'Selected work preview',
+    selectedWorks: 'Selected works', workPreview: 'Selected work preview', timeline: 'Timeline',
     skip: 'Skip to content', enquiries: 'Enquiries',
   },
   zh: {
@@ -28,7 +28,7 @@ export const ui = {
     instruction: '点击画面 / 滚动进入下一场景', play: '播放首页影像',
     info: '信息', showreel: '作品集', temporaryMedia: '临时视频样例', mediaPending: '素材待定',
     client: '客户', year: '年份', format: '形式', back: '返回项目',
-    selectedWorks: '精选作品', workPreview: '精选作品预览',
+    selectedWorks: '精选作品', workPreview: '精选作品预览', timeline: '编年内容',
     skip: '跳至主要内容', enquiries: '合作咨询',
   },
 } as const;

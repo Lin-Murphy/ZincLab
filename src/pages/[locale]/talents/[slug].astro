@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import TalentWorks from '@/components/TalentWorks.astro';
+import TalentTimeline from '@/components/TalentTimeline.astro';
 import { asset, locales, localize, type Locale, ui } from '@/lib/i18n';
 export const getStaticPaths = (async () => {
   const talents = await getCollection('talents');
@@ -21,5 +22,6 @@ const projects = (await getCollection('projects'))
     <section class="talent-info"><h2>{ui[locale].info}</h2><p class="lead">{localize(talent.data.summary, locale)}</p><div class="prose"><p>{localize(talent.data.body, locale)}</p></div></section>
     <section class="showreel"><div><span>{ui[locale].showreel}</span><strong>{talent.data.showreel.src ? ui[locale].temporaryMedia : ui[locale].mediaPending}</strong></div>{talent.data.showreel.src ? <video src={asset(talent.data.showreel.src)} poster={asset(talent.data.showreel.poster)} muted controls playsinline preload="metadata" aria-label={`${talent.data.name} ${ui[locale].showreel}`} /> : <img src={asset(talent.data.showreel.poster)} alt={ui[locale].placeholderStudy} loading="lazy" />}</section>
     <TalentWorks projects={projects} locale={locale} />
+    <TalentTimeline items={talent.data.timeline} locale={locale} />
   </main>
 </BaseLayout>

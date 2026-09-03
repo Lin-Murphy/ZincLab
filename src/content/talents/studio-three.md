@@ -15,7 +15,20 @@ previews:
 showreel:
   src: "/media/home/placeholder/home-03.mp4"
   poster: "/media/playbook-samples/cyan-texture.jpeg"
-projectSlugs: ["soft-structure"]
+projectSlugs: ["soft-structure", "material-study", "human-form"]
+timeline:
+  - year: "01"
+    title: { en: "Threshold / sample", zh: "门槛 / 样例" }
+    body: { en: "Temporary chronology content using a self-hosted environment photograph.", zh: "使用自托管环境照片的临时编年内容。" }
+    image:
+      src: "/media/personal-samples/dsc00590.jpg"
+      alt: { en: "Stone opening framing a green pool", zh: "框住绿色水池的石质开口" }
+  - year: "02"
+    title: { en: "Archive space / sample", zh: "档案空间 / 样例" }
+    body: { en: "Replace this entry with an approved biography milestone.", zh: "用已确认的人物经历替换此条目。" }
+    image:
+      src: "/media/personal-samples/dsc00597.jpg"
+      alt: { en: "Stone architecture surrounding still water", zh: "静水周围的石质建筑" }
 order: 3
 published: false
 placeholder: true

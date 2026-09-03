@@ -23,6 +23,7 @@ const talents = defineCollection({
     portrait: image,
     previews: z.array(image).min(2),
     showreel: z.object({ poster: z.string(), src: z.string().optional() }),
+    timeline: z.array(z.object({ year: z.string(), title: localizedText, body: localizedText, image: image.optional() })).default([]),
     projectSlugs: z.array(z.string()).default([]),
     order: z.number().int(),
     published: z.boolean().default(false),

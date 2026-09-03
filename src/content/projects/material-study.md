@@ -16,7 +16,7 @@ gallery:
     alt: { en: "Fabric moving across a cool metallic surface", zh: "掠过冷色金属表面的布料" }
   - src: "/media/placeholder-still.webp"
     alt: { en: "Paper, metal and wireframe material study", zh: "纸张、金属与线框的材质研究" }
-talentSlugs: ["studio-one"]
+talentSlugs: ["studio-one", "studio-two", "studio-three"]
 order: 1
 published: false
 placeholder: true

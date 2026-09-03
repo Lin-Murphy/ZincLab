@@ -16,7 +16,7 @@ gallery:
     alt: { en: "Anonymous figure behind textured glass", zh: "磨砂玻璃后的匿名人物" }
   - src: "/media/placeholder-hero.webp"
     alt: { en: "Fabric moving across a metallic surface", zh: "掠过金属表面的布料" }
-talentSlugs: ["studio-two"]
+talentSlugs: ["studio-one", "studio-two", "studio-three"]
 order: 2
 published: false
 placeholder: true
