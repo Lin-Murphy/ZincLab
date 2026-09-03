@@ -15,7 +15,7 @@ previews:
 showreel:
   src: "/media/home/placeholder/home-01.mp4"
   poster: "/media/playbook-samples/blue-grid.jpeg"
-projectSlugs: ["material-study", "human-form", "soft-structure", "garden-study", "waterline-study"]
+projectSlugs: ["material-study", "human-form", "soft-structure", "garden-study", "waterline-study", "quiet-machines", "afterimage-notes", "cyan-field", "aqua-raster"]
 timeline:
   - year: "01"
     title: { en: "First light / sample", zh: "初见光线 / 样例" }
