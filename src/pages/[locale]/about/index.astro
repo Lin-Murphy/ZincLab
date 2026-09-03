@@ -10,5 +10,5 @@ const copy = {
 }[locale];
 ---
 <BaseLayout title={ui[locale].nav.about} locale={locale} active="about" navTheme="light" canonicalPath={Astro.url.pathname}>
-  <main id="main" class="about-page"><p class="eyebrow">{copy.eyebrow}</p><h1 set:html={copy.title} /><div class="about-grid"><p class="about-lead">{copy.lead}</p><div><p>{copy.detail}</p><p class="draft-note">{copy.note}</p></div></div><footer class="contact-strip"><span>{ui[locale].enquiries}</span><a href="mailto:studio@example.com">studio@example.com</a><span>{copy.location}</span></footer></main>
+  <main id="main" class="about-page"><p class="eyebrow">{copy.eyebrow}</p><h1 set:html={copy.title} /><div class="about-grid"><p class="about-lead">{copy.lead}</p><div><p>{copy.detail}</p><p class="draft-note">{copy.note}</p></div></div></main>
 </BaseLayout>

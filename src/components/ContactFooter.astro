@@ -1,0 +1,15 @@
+---
+import { site } from '@/data/site';
+import type { Locale } from '@/lib/i18n';
+import { ui } from '@/lib/i18n';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+
+<footer class="contact-strip" aria-label={ui[locale].enquiries}>
+  <span>{ui[locale].enquiries}</span>
+  <a href={`mailto:${site.email}`}>{site.email}</a>
+  <span class="contact-socials">
+    {site.social.map((item) => <a href={item.href} target="_blank" rel="noreferrer">{item.label}</a>)}
+  </span>
+</footer>

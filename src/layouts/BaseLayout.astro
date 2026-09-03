@@ -1,5 +1,6 @@
 ---
 import SiteHeader from '@/components/SiteHeader.astro';
+import ContactFooter from '@/components/ContactFooter.astro';
 import { site } from '@/data/site';
 import type { Locale } from '@/lib/i18n';
 import { localize, route, ui } from '@/lib/i18n';
@@ -40,5 +41,6 @@ const otherHreflang = otherLocale === 'zh' ? 'zh-CN' : 'en';
     <a class="skip-link" href="#main">{ui[locale].skip}</a>
     <SiteHeader active={active} theme={navTheme} locale={locale} />
     <slot />
+    {bodyClass !== 'scene-page' && <ContactFooter locale={locale} />}
   </body>
 </html>

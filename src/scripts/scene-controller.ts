@@ -9,7 +9,7 @@ const meter = root?.querySelector<HTMLElement>('[data-scene-meter]');
 if (root && track && scenes.length) {
   const locale = root.dataset.locale === 'zh' ? 'zh' : 'en';
   const base = (root.dataset.base ?? '/').replace(/\/$/, '');
-  const routes = [`${base}/${locale}/`, `${base}/${locale}/talents/`, `${base}/${locale}/projects/`];
+  const routes = [`${base}/${locale}/`, `${base}/${locale}/talents/`, `${base}/${locale}/projects/`, `${base}/${locale}/?scene=contact`];
   const sceneParam = new URL(location.href).searchParams.get('scene');
   let index = sceneParam ? Math.max(0, scenes.findIndex((scene) => scene.dataset.scene === sceneParam)) : Math.max(0, routes.indexOf(location.pathname));
   let wheelDelta = 0;

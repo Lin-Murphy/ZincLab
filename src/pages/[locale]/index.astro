@@ -5,6 +5,7 @@ import HomeFilms from '@/components/HomeFilms.astro';
 import ProjectsGrid from '@/components/ProjectsGrid.astro';
 import TalentList from '@/components/TalentList.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ContactFooter from '@/components/ContactFooter.astro';
 import { locales, type Locale, ui } from '@/lib/i18n';
 export const getStaticPaths = (async () => locales.map((locale) => ({ params: { locale } }))) satisfies GetStaticPaths;
 const locale = Astro.params.locale as Locale;
@@ -18,6 +19,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       <section class="scene scene-home" data-scene="home" data-nav-theme="dark" aria-label={ui[locale].nav.home}><HomeFilms films={films} locale={locale} /></section>
       <section class="scene scene-talents" data-scene="talents" data-nav-theme="light" aria-label={ui[locale].nav.talents}><div class="scene-label">{ui[locale].roster}</div><TalentList talents={talents} locale={locale} /></section>
       <section class="scene scene-projects" data-scene="projects" data-nav-theme="light" aria-label={ui[locale].nav.projects}><div class="scene-heading"><span>{ui[locale].archive}</span><h2>{ui[locale].nav.projects}</h2></div><ProjectsGrid projects={projects} locale={locale} /></section>
+      <section class="scene scene-contact" data-scene="contact" data-nav-theme="light" aria-label={ui[locale].enquiries}><ContactFooter locale={locale} /></section>
     </div>
     <div class="scene-meter" aria-hidden="true"><span data-scene-meter></span></div>
   </main>
