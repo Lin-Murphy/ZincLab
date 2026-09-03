@@ -8,9 +8,6 @@ body: { en: "A temporary location study using a personal environment photograph.
 cover:
   src: "/media/personal-samples/dsc00462.jpg"
   alt: { en: "Garden path and dense greenery", zh: "庭院小径与浓密绿植" }
-previewVideo:
-  src: "/media/home/placeholder/home-02.mp4"
-  poster: "/media/personal-samples/dsc00462.jpg"
 gallery:
   - src: "/media/personal-samples/dsc00462.jpg"
     alt: { en: "Garden path and dense greenery", zh: "庭院小径与浓密绿植" }

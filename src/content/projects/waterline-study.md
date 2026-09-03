@@ -8,9 +8,6 @@ body: { en: "A temporary landscape study using a personal river photograph. It d
 cover:
   src: "/media/personal-samples/dsc00550.jpg"
   alt: { en: "River, weir and stone bridge", zh: "河流、堰坝与石桥" }
-previewVideo:
-  src: "/media/home/placeholder/home-03.mp4"
-  poster: "/media/personal-samples/dsc00550.jpg"
 gallery:
   - src: "/media/personal-samples/dsc00550.jpg"
     alt: { en: "River, weir and stone bridge", zh: "河流、堰坝与石桥" }
