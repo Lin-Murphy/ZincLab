@@ -30,6 +30,7 @@ const { locale } = Astro.props;
     <div class="progress-track"><span data-film-progress></span></div>
   </div>
   <p class="film-instruction">{ui[locale].instruction}</p>
+  <span class="scroll-cue" aria-hidden="true"><svg viewBox="0 0 16 16" focusable="false"><path d="M3 6.25 8 11l5-4.75" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
 </div>
 
 <script src="../scripts/video-controller.ts"></script>
