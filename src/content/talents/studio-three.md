@@ -21,15 +21,15 @@ timeline:
     title: { en: "Threshold / sample", zh: "门槛 / 样例" }
     body: { en: "Temporary chronology content using a self-hosted environment photograph.", zh: "使用自托管环境照片的临时编年内容。" }
     image:
-      src: "/media/personal-samples/dsc00590.jpg"
-      alt: { en: "Stone opening framing a green pool", zh: "框住绿色水池的石质开口" }
+      src: "/media/placeholder-still.webp"
+      alt: { en: "Soft abstract still placeholder", zh: "柔和抽象静帧占位图" }
     projectSlug: "soft-structure"
   - year: "02"
     title: { en: "Archive space / sample", zh: "档案空间 / 样例" }
     body: { en: "Replace this entry with an approved biography milestone.", zh: "用已确认的人物经历替换此条目。" }
     image:
-      src: "/media/personal-samples/dsc00597.jpg"
-      alt: { en: "Stone architecture surrounding still water", zh: "静水周围的石质建筑" }
+      src: "/media/personal-samples/dsc00462.jpg"
+      alt: { en: "Garden path and dense greenery", zh: "庭院小径与浓密绿植" }
     projectSlug: "garden-study"
 order: 3
 published: false
