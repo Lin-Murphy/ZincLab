@@ -5,7 +5,6 @@ if (root) {
   const films = [...root.querySelectorAll<HTMLElement>('[data-film]')];
   const progress = root.querySelector<HTMLElement>('[data-film-progress]');
   const count = root.querySelector<HTMLElement>('[data-film-count]');
-  const playButton = root.querySelector<HTMLButtonElement>('[data-play-fallback]');
   let index = 0;
   let placeholderStart = performance.now();
   let raf = 0;
@@ -62,12 +61,8 @@ if (root) {
       video.currentTime = 0;
       try {
         await video.play();
-        if (playButton) playButton.hidden = true;
-      } catch {
-        if (playButton) playButton.hidden = false;
-      }
+      } catch { /* Autoplay can be blocked; the poster remains visible. */ }
       video.onended = () => show(nextLoopIndex(index, films.length));
-      video.onerror = () => { if (playButton) playButton.hidden = false; };
     } else {
       fallbackTimer = window.setTimeout(() => show(nextLoopIndex(index, films.length)), placeholderDuration);
       queueNext(index);
@@ -79,11 +74,10 @@ if (root) {
     if (target.closest('a, button, .film-progress')) return;
     void show(nextLoopIndex(index, films.length));
   });
-  playButton?.addEventListener('click', () => void getVideo(index)?.play().then(() => { playButton.hidden = true; }).catch(() => undefined));
   addEventListener('zinc:scenechange', ((event: CustomEvent<{ scene: string }>) => {
     const video = getVideo(index);
     if (event.detail.scene !== 'home') video?.pause();
-    else if (video) void video.play().catch(() => { if (playButton) playButton.hidden = false; });
+    else if (video) void video.play().catch(() => undefined);
   }) as EventListener);
   document.addEventListener('visibilitychange', () => {
     const video = getVideo(index);

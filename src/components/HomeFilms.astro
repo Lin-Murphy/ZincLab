@@ -25,7 +25,6 @@ const { locale } = Astro.props;
       </article>
     ))}
   </div>
-  <button class="play-fallback" type="button" data-play-fallback hidden aria-label={ui[locale].play}>{locale === 'zh' ? '播放' : 'Play'}</button>
   <div class="film-progress" aria-label="Film progress">
     <span data-film-count>01 / {String(films.length).padStart(2, '0')}</span>
     <div class="progress-track"><span data-film-progress></span></div>
