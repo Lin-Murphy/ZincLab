@@ -9,6 +9,5 @@ const locale = Astro.params.locale as Locale;
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout title={ui[locale].nav.projects} locale={locale} active="projects" navTheme="light" canonicalPath={Astro.url.pathname}>
-  <main id="main" class="listing-page projects-listing" data-edge-navigation data-edge-previous={`../talents/`}><header class="listing-header"><span>{ui[locale].archive}</span><h1>{ui[locale].nav.projects}</h1></header><ProjectsGrid projects={projects} locale={locale} /></main>
+  <main id="main" class="listing-page projects-listing"><header class="listing-header"><span>{ui[locale].archive}</span><h1>{ui[locale].nav.projects}</h1></header><ProjectsGrid projects={projects} locale={locale} /></main>
 </BaseLayout>
-<script src="../../../scripts/edge-navigation.ts"></script>
