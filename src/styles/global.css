@@ -93,6 +93,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .scene-projects { padding-top: var(--header-height); background: var(--paper); overflow: auto; }
 .scene-heading { height: clamp(6rem, 15vh, 10rem); padding: 1.25rem var(--gutter); display: flex; align-items: flex-end; justify-content: space-between; }
+.scene-projects { overflow-y: auto; overflow-x: hidden; }
 .scene-heading h2 { margin: 0; font-size: clamp(3rem, 7vw, 7rem); line-height: .72; letter-spacing: -.07em; text-transform: uppercase; }
 .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--ink); }
 .project-card { position: relative; min-height: 30vw; overflow: hidden; background: var(--ink); color: var(--white); }
@@ -124,8 +125,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .contact-strip a { color: inherit; text-decoration: none; }
 .contact-strip a:hover, .contact-strip a:focus-visible { color: var(--accent); }
 .contact-socials { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-end; }
-.scene-contact { display: grid; align-items: stretch; padding: 0 var(--gutter); background: var(--paper); }
-.scene-contact .contact-strip { width: 100%; margin: 0; min-height: 100%; box-sizing: border-box; align-content: space-between; padding: clamp(3rem, 8vw, 8rem) var(--gutter) 2rem; }
+.scene-projects > .contact-strip { margin: 0; padding: 1.1rem var(--gutter); gap: 1rem; }
+.scene-projects > .contact-strip .contact-main { display: grid; grid-template-columns: 1fr 2fr; align-items: center; gap: 1rem; }
+.scene-projects > .contact-strip .contact-email { font-size: .82rem; line-height: 1; letter-spacing: .01em; }
+.scene-projects > .contact-strip .contact-meta { font-size: .62rem; }
 
 .talent-detail, .project-detail { padding-top: var(--header-height); }
 .detail-title, .project-hero-title { min-height: 56vh; padding: clamp(5rem, 10vw, 10rem) var(--gutter) 2rem; display: flex; flex-direction: column; justify-content: flex-end; }

@@ -18,8 +18,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     <div class="scene-track" data-scene-track>
       <section class="scene scene-home" data-scene="home" data-nav-theme="dark" aria-label={ui[locale].nav.home}><HomeFilms films={films} locale={locale} /></section>
       <section class="scene scene-talents" data-scene="talents" data-nav-theme="light" aria-label={ui[locale].nav.talents}><div class="scene-label">{ui[locale].roster}</div><TalentList talents={talents} locale={locale} /></section>
-      <section class="scene scene-projects" data-scene="projects" data-nav-theme="light" aria-label={ui[locale].nav.projects}><div class="scene-heading"><span>{ui[locale].archive}</span><h2>{ui[locale].nav.projects}</h2></div><ProjectsGrid projects={projects} locale={locale} /></section>
-      <section class="scene scene-contact" data-scene="contact" data-nav-theme="light" aria-label={ui[locale].enquiries}><ContactFooter locale={locale} /></section>
+      <section class="scene scene-projects" data-scene="projects" data-nav-theme="light" aria-label={ui[locale].nav.projects}><div class="scene-heading"><span>{ui[locale].archive}</span><h2>{ui[locale].nav.projects}</h2></div><ProjectsGrid projects={projects} locale={locale} /><ContactFooter locale={locale} /></section>
     </div>
     <div class="scene-meter" aria-hidden="true"><span data-scene-meter></span></div>
   </main>

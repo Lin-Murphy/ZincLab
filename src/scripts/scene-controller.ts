@@ -9,7 +9,7 @@ const meter = root?.querySelector<HTMLElement>('[data-scene-meter]');
 if (root && track && scenes.length) {
   const locale = root.dataset.locale === 'zh' ? 'zh' : 'en';
   const base = (root.dataset.base ?? '/').replace(/\/$/, '');
-  const routes = [`${base}/${locale}/`, `${base}/${locale}/talents/`, `${base}/${locale}/projects/`, `${base}/${locale}/?scene=contact`];
+  const routes = [`${base}/${locale}/`, `${base}/${locale}/talents/`, `${base}/${locale}/projects/`];
   const sceneParam = new URL(location.href).searchParams.get('scene');
   let index = sceneParam ? Math.max(0, scenes.findIndex((scene) => scene.dataset.scene === sceneParam)) : Math.max(0, routes.indexOf(location.pathname));
   let wheelDelta = 0;
@@ -63,6 +63,14 @@ if (root && track && scenes.length) {
   };
 
   root.addEventListener('wheel', (event) => {
+    const activeScene = scenes[index];
+    const sceneScrolls = activeScene?.dataset.scene === 'projects' && activeScene.scrollHeight > activeScene.clientHeight;
+    if (sceneScrolls) {
+      const atTop = activeScene.scrollTop <= 2;
+      const atBottom = activeScene.scrollTop + activeScene.clientHeight >= activeScene.scrollHeight - 2;
+      if ((event.deltaY > 0 && !atBottom) || (event.deltaY < 0 && !atTop)) return;
+      if (event.deltaY > 0 && atBottom) return;
+    }
     event.preventDefault();
     if (locked) return;
     if (wheelDelta && Math.sign(wheelDelta) !== Math.sign(event.deltaY)) wheelDelta = 0;
@@ -76,7 +84,8 @@ if (root && track && scenes.length) {
   }, { passive: false });
 
   root.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'mouse' || locked) return;
+    const activeScene = scenes[index];
+    if (event.pointerType === 'mouse' || locked || (activeScene?.dataset.scene === 'projects' && activeScene.scrollHeight > activeScene.clientHeight)) return;
     pointerStart = event.clientY;
     pointerDelta = 0;
     root.setPointerCapture(event.pointerId);
