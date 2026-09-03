@@ -21,10 +21,6 @@ if (root && track && scenes.length) {
   const pointerThreshold = 72;
 
   const sync = (next: number, push = true) => {
-    if (next === index && !push) {
-      track.style.setProperty('--drag-y', '0px');
-      return;
-    }
     index = next;
     track.style.setProperty('--scene-index', String(index));
     track.style.setProperty('--drag-y', '0px');
