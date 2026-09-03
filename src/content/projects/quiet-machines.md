@@ -8,9 +8,6 @@ body: { en: "A fictional moving-image study about soft gestures inside precise s
 cover:
   src: "/media/playbook-samples/blue-wireframe.jpeg"
   alt: { en: "Blue wireframe visual study", zh: "蓝色线框视觉研究" }
-previewVideo:
-  src: "/media/home/placeholder/home-01.mp4"
-  poster: "/media/playbook-samples/blue-wireframe.jpeg"
 gallery:
   - src: "/media/playbook-samples/blue-wireframe.jpeg"
     alt: { en: "Blue wireframe visual study", zh: "蓝色线框视觉研究" }
