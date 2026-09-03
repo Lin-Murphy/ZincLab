@@ -10,7 +10,8 @@ if (root && track && scenes.length) {
   const locale = root.dataset.locale === 'zh' ? 'zh' : 'en';
   const base = (root.dataset.base ?? '/').replace(/\/$/, '');
   const routes = [`${base}/${locale}/`, `${base}/${locale}/talents/`, `${base}/${locale}/projects/`];
-  let index = Math.max(0, routes.indexOf(location.pathname));
+  const sceneParam = new URL(location.href).searchParams.get('scene');
+  let index = sceneParam ? Math.max(0, scenes.findIndex((scene) => scene.dataset.scene === sceneParam)) : Math.max(0, routes.indexOf(location.pathname));
   let wheelDelta = 0;
   let locked = false;
   let releaseTimer = 0;
@@ -105,6 +106,10 @@ if (root && track && scenes.length) {
     if (target < 0 || target >= scenes.length) return;
     link.addEventListener('click', (event) => { event.preventDefault(); transition(target); });
   });
-  addEventListener('popstate', () => sync(Math.max(0, routes.indexOf(location.pathname)), false));
+  addEventListener('popstate', () => {
+    const requested = new URL(location.href).searchParams.get('scene');
+    const requestedIndex = requested ? scenes.findIndex((scene) => scene.dataset.scene === requested) : routes.indexOf(location.pathname);
+    sync(Math.max(0, requestedIndex), false);
+  });
   sync(index, false);
 }

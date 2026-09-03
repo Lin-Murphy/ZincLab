@@ -6,10 +6,12 @@ import { route, ui } from '@/lib/i18n';
 interface Props { active?: 'home' | 'talents' | 'projects' | 'about'; theme?: 'light' | 'dark'; locale: Locale; }
 const { active = 'home', theme = 'light', locale } = Astro.props;
 const equivalentPath = Astro.url.pathname.replace(`/${locale}/`, `/${locale === 'en' ? 'zh' : 'en'}/`);
+const scenePage = route(locale);
+const sceneHref = (key: 'talents' | 'projects', fallback: string) => Astro.url.pathname === scenePage ? fallback : `${scenePage}?scene=${key}`;
 const nav = [
   { key: 'home', label: ui[locale].nav.home, href: route(locale) },
-  { key: 'talents', label: ui[locale].nav.talents, href: route(locale, 'talents') },
-  { key: 'projects', label: ui[locale].nav.projects, href: route(locale, 'projects') },
+  { key: 'talents', label: ui[locale].nav.talents, href: sceneHref('talents', route(locale, 'talents')) },
+  { key: 'projects', label: ui[locale].nav.projects, href: sceneHref('projects', route(locale, 'projects')) },
   { key: 'about', label: ui[locale].nav.about, href: route(locale, 'about') },
 ] as const;
 ---
