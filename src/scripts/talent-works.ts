@@ -4,24 +4,32 @@ document.querySelectorAll<HTMLElement>('[data-talent-works]').forEach((root) => 
   const image = root.querySelector<HTMLImageElement>('[data-work-image]');
   const video = root.querySelector<HTMLVideoElement>('[data-work-video]');
   if (!preview || !image || !video || matchMedia('(hover: none)').matches) return;
+  let activeLink: HTMLAnchorElement | null = null;
+  let activeVideoSource = '';
 
   const clear = () => {
     video.pause();
     preview.classList.remove('is-active');
     links.forEach((link) => link.classList.remove('is-muted'));
+    activeLink = null;
   };
   const activate = (link: HTMLAnchorElement) => {
     links.forEach((item) => item.classList.toggle('is-muted', item !== link));
+    if (activeLink === link) return;
     image.src = link.dataset.image ?? '';
     image.alt = link.dataset.imageAlt ?? '';
-    const source = link.dataset.video;
-    video.style.opacity = '0';
-    video.pause();
-    video.removeAttribute('src');
-    video.removeAttribute('poster');
-    video.load();
-    delete video.dataset.activeSrc;
-    if (source) {
+    const source = link.dataset.video ?? '';
+    activeLink = link;
+    if (source !== activeVideoSource) {
+      video.style.opacity = '0';
+      video.pause();
+      video.removeAttribute('src');
+      video.removeAttribute('poster');
+      video.load();
+      delete video.dataset.activeSrc;
+    }
+    activeVideoSource = source;
+    if (source && video.dataset.activeSrc !== source) {
       video.dataset.activeSrc = source;
       video.src = source;
       video.poster = link.dataset.poster ?? '';
