@@ -1,4 +1,11 @@
-import { sanityClient } from 'sanity:client';
+import { createClient } from '@sanity/client';
+
+const sanityClient = createClient({
+  projectId: import.meta.env.SANITY_PROJECT_ID ?? 'lhlost58',
+  dataset: import.meta.env.SANITY_DATASET ?? 'production',
+  apiVersion: '2026-03-01',
+  useCdn: false,
+});
 
 export interface SanityDemoProject {
   title?: { en?: string; zh?: string };
