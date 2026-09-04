@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { asset, locales, route, type Locale } from '@/lib/i18n';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const copy = locale === 'zh'
+  ? { eyebrow: 'Sanity 内容预览 / 示例页面', title: '内容由设计师更新，版式由 Zinc Lab 保持', intro: '这是一个独立的 Sanity 接入演示页。当前仍使用本地示例内容，页面结构已经按照未来 Sanity 字段的方式组织。', modules: ['项目标题与元信息', '封面图片', '正文内容', '图库模块', '关联创作者'], note: '下一步：将这些字段接入你的 Sanity project，再由设计师在 Studio 中编辑。', back: '返回项目' }
+  : { eyebrow: 'Sanity content preview / demo page', title: 'Content changes. The Zinc Lab frame stays.', intro: 'This standalone demo shows how a designer-managed Project can render through the existing Zinc Lab layout. It currently uses local sample content, ready to be replaced by Sanity data.', modules: ['Project title and metadata', 'Cover image', 'Rich text body', 'Gallery modules', 'Related talents'], note: 'Next: connect these fields to your Sanity project so designers can edit them in Studio.', back: 'Back to projects' };
+---
+
+<BaseLayout title="Project / Sanity" locale={locale} active="projects" navTheme="light" canonicalPath={Astro.url.pathname}>
+  <main id="main" class="sanity-demo">
+    <header class="sanity-demo-heading"><div><span class="eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1></div><span class="sanity-demo-badge">{locale === 'zh' ? '本地示例数据' : 'Local sample data'}</span></header>
+    <section class="sanity-demo-grid">
+      <div class="sanity-demo-content"><figure class="sanity-demo-image"><img src={asset('/media/playbook-samples/aqua-raster.jpeg')} alt={locale === 'zh' ? '浅蓝光栅视觉样例' : 'Aqua raster visual sample'} /></figure><div class="sanity-demo-copy"><p>{copy.intro}</p><p>{locale === 'zh' ? '正式接入后，设计师只需要编辑右侧字段，Astro 会在构建时生成同样的静态页面。' : 'Once connected, a designer edits the fields on the right and Astro generates the same static page at build time.'}</p></div></div>
+      <aside class="sanity-demo-fields" aria-label={locale === 'zh' ? 'Sanity 字段示例' : 'Sanity field example'}><span class="eyebrow">{locale === 'zh' ? '设计师可编辑字段' : 'Designer-editable fields'}</span><ol>{copy.modules.map((module, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><strong>{module}</strong></li>)}</ol><p class="sanity-demo-note">{copy.note}</p></aside>
+    </section>
+    <a class="back-link" href={route(locale, 'projects')}>{copy.back}</a>
+  </main>
+</BaseLayout>

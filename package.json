@@ -11,6 +11,8 @@
     "test": "node --test tests/*.test.ts"
   },
   "dependencies": {
+    "@sanity/astro": "^3.5.1",
+    "@sanity/client": "^8.5.0",
     "astro": "^6.0.0"
   },
   "devDependencies": {
