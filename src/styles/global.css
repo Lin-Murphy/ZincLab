@@ -132,7 +132,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .sanity-demo-fields li span { color: var(--muted); font-size: .7rem; letter-spacing: .08em; }
 .sanity-demo-fields li strong { font-size: clamp(1rem, 1.5vw, 1.35rem); font-weight: 400; }
 .sanity-demo-note { margin: 2rem 0 0; color: var(--muted); font-size: .78rem; line-height: 1.45; }
-.contact-strip { margin: 0 var(--gutter); padding: clamp(2rem, 4vw, 4rem) var(--gutter); display: grid; gap: 3rem; background: var(--ink); color: var(--white); font-size: .82rem; }
+.contact-strip { margin: 0; padding: clamp(2rem, 4vw, 4rem) var(--gutter); display: grid; gap: 3rem; background: var(--ink); color: var(--white); font-size: .82rem; }
 .contact-main { display: grid; gap: 1.2rem; }
 .contact-main > span, .contact-meta { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
 .contact-email { width: fit-content; color: var(--white); font-size: clamp(2.5rem, 8vw, 8rem); line-height: .85; letter-spacing: -.07em; text-decoration: none; }
