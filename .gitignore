@@ -9,3 +9,4 @@ PROJECT_BRIEF.md
 .env
 .env.*
 !.env.example
+studio/.sanity/
