@@ -117,7 +117,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .about-grid p { margin: 0 0 1.25rem; font-size: clamp(1.15rem, 1.8vw, 1.8rem); line-height: 1.25; }
 .about-grid .about-lead { font-size: clamp(2rem, 4.1vw, 4.5rem); line-height: .98; letter-spacing: -.045em; }
 .about-grid .draft-note { margin-top: 3rem; font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; color: rgba(10,11,12,.55); }
-.contact-strip { margin: 0 calc(var(--gutter) * -1); padding: clamp(2rem, 4vw, 4rem) var(--gutter); display: grid; gap: 3rem; background: var(--ink); color: var(--white); font-size: .82rem; }
+.contact-strip { margin: 0 var(--gutter); padding: clamp(2rem, 4vw, 4rem) var(--gutter); display: grid; gap: 3rem; background: var(--ink); color: var(--white); font-size: .82rem; }
 .contact-main { display: grid; gap: 1.2rem; }
 .contact-main > span, .contact-meta { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
 .contact-email { width: fit-content; color: var(--white); font-size: clamp(2.5rem, 8vw, 8rem); line-height: .85; letter-spacing: -.07em; text-decoration: none; }
